@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusWave - ADHD Task and Wellbeing App</title>
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>FocusWave</h1>
+    <p>Your ADHD Task and Wellbeing Companion</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#tasks">Task Manager</a>
+    <a href="#wellbeing">Wellbeing Tracker</a>
+    <a href="#stats">Statistics</a>
+    <a href="#settings">Settings</a>
+</nav>
+
+<main>
+    <section id="home">
+        <h2>Welcome to FocusWave</h2>
+        <p>Stay organized and track your wellbeing effortlessly.</p>
+        <h3>Today's Overview</h3>
+        <p><strong>Tasks Completed:</strong> <span id="tasks-completed">0</span>/<span id="total-tasks">0</span></p>
+        <progress id="tasks-progress" value="0" max="0"></progress>
+        <p><strong>Current Mood:</strong> <span id="current-mood">No mood logged today.</span></p>
+    </section>
+
+    <section id="tasks">
+        <h2>Task Manager</h2>
+        <h3>Add New Task</h3>
+        <form id="task-form">
+            <label for="task-name">Task Name:</label>
+            <input type="text" id="task-name" required>
+            <label for="category">Category:</label>
+            <input type="text" id="category">
+            <label for="priority">Priority Level:</label>
+            <select id="priority">
+                <option value="high">High Priority</option>
+                <option value="medium">Medium Priority</option>
+                <option value="low">Low Priority</option>
+            </select>
+            <label for="deadline">Deadline:</label>
+            <input type="date" id="deadline">
+            <input type="submit" value="Add Task">
+        </form>
+
+        <h3>Task List</h3>
+        <table id="task-table">
+            <tr>
+                <th>Done</th>
+                <th>Task</th>
+                <th>Category</th>
+                <th>Priority</th>
+                <th>Deadline</th>
+                <th>Delete</th>
+            </tr>
+        </table>
+    </section>
+
+    <section id="wellbeing">
+        <h2>Wellbeing Tracker</h2>
+        <h3>Log Mood Entry</h3>
+        <form id="mood-form">
+            <label for="mood">Today's Mood:</label>
+            <select id="mood">
+                <option value="😊 Happy">😊 Happy</option>
+                <option value="😐 Neutral">😐 Neutral</option>
+                <option value="😔 Sad">😔 Sad</option>
+                <option value="😟 Anxious">😟 Anxious</option>
+            </select>
+            <label for="notes">Notes:</label>
+            <textarea id="notes" rows="4"></textarea>
+            <input type="submit" value="Log Mood">
+        </form>
+
+        <h3>Mood Journal</h3>
+        <table id="mood-table">
+            <tr>
+                <th>Date</th>
+                <th>Mood</th>
+                <th>Notes</th>
+                <th>Delete</th>
+            </tr>
+        </table>
+
+        <h3>Habit Tracker</h3>
+        <table id="habit-table">
+            <tr>
+                <th>Habit</th>
+                <th>Completed</th>
+            </tr>
+            <tr>
+                <td>Exercise</td>
+                <td><input type="checkbox" class="habit-checkbox" data-habit="Exercise"></td>
+            </tr>
+            <tr>
+                <td>Meditation</td>
+                <td><input type="checkbox" class="habit-checkbox" data-habit="Meditation"></td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="stats">
+        <h2>Statistics</h2>
+        <h3>Task Completion</h3>
+        <p>Completed Tasks: <span id="stats-tasks-completed">0</span>/<span id="stats-total-tasks">0</span></p>
+        <progress id="stats-tasks-progress" value="0" max="0"></progress>
+        <h3>Wellbeing Trends</h3>
+        <pre id="mood-trends"></pre>
+    </section>
+
+    <section id="settings">
+        <h2>Settings</h2>
+        <h3>Customization Options</h3>
+        <form id="settings-form">
+            <label for="theme">Theme Selection:</label>
+            <select id="theme">
+                <option value="dark">Dark Theme</option>
+                <option value="light">Light Theme</option>
+            </select>
+            <label for="font-size">Font Size:</label>
+            <select id="font-size">
+                <option value="small">Small</option>
+                <option value="default">Default</option>
+                <option value="large">Large</option>
+            </select>
+            <input type="submit" value="Apply Settings">
+        </form>
+        <h3>About FocusWave</h3>
+        <p>FocusWave helps individuals with ADHD manage tasks and track wellbeing in an engaging way.</p>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2023 FocusWave</p>
+</footer>
+
+<!-- Link to external JS file -->
+<script src="script.js"></script>
+
+<!-- Optional: Register the service worker -->
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+    .then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(function(error) {
+        console.log('ServiceWorker registration failed: ', error);
+    });
+}
+</script>
+
+</body>
+</html>
